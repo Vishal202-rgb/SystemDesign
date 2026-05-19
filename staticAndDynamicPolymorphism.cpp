@@ -154,7 +154,7 @@ int main() {
     myElectricCar->brake();
     myElectricCar->stopEngine();
 
-    // Cleanup
+    //remove
     delete myManualCar;
     delete myElectricCar;
 
