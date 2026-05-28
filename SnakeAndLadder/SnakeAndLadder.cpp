@@ -600,9 +600,9 @@ int main() {
         cin >> boardSize;
         
         cout << "Choose difficulty:" << endl;
-        cout << "1. Easy (more ladders)" << endl;
-        cout << "2. Medium (balanced)" << endl;
-        cout << "3. Hard (more snakes)" << endl;
+        cout << "1. Easy (much more ladders)" << endl;
+        cout << "2. Medium (balanced snakes && ladders)" << endl;
+        cout << "3. Hard (much more snakes)" << endl;
         
         int diffChoice;
         cin >> diffChoice;
