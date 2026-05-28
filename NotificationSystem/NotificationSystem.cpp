@@ -48,7 +48,7 @@ public:
     TimestampDecorator(INotification* n) : INotificationDecorator(n) { }
     
     string getContent() const override {
-        return "[2025-04-13 14:22:00] " + notification->getContent();
+        return "[2026-05-28 17:13:30] " + notification->getContent();
     }
 };
 
@@ -99,7 +99,7 @@ public:
     }
 
     void removeObserver(IObserver* obs) override {
-        observers.erase(remove(observers.begin(), observers.end(), obs), observers.end());
+        observers.erase(remove(begin(observers),end(observers), obs), end(observers));
     }
 
     void notifyObservers() override {
@@ -278,8 +278,8 @@ int main() {
     // Create NotificationEngine observers.
     NotificationEngine* notificationEngine = new NotificationEngine(notificationObservable);
 
-    notificationEngine->addNotificationStrategy(new EmailStrategy("random.person@gmail.com"));
-    notificationEngine->addNotificationStrategy(new SMSStrategy("+91 9876543210"));
+    notificationEngine->addNotificationStrategy(new EmailStrategy("vishalkumar150206@gmail.com"));
+    notificationEngine->addNotificationStrategy(new SMSStrategy("+91 8292765855"));
     notificationEngine->addNotificationStrategy(new PopUpStrategy());
 
     // Attach these observers.
