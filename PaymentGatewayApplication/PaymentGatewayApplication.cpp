@@ -293,7 +293,7 @@ int main() {
 
     srand(static_cast<unsigned>(time(nullptr)));
 
-    PaymentRequest* req1 = new PaymentRequest("Aditya", "Shubham", 1000.0, "INR");
+    PaymentRequest* req1 = new PaymentRequest("sonu", "vishal", 1000.0, "INR");
 
     cout << "Processing via Paytm\n";
     cout << "------------------------------\n";
@@ -301,7 +301,7 @@ int main() {
     cout << "Result: " << (res1 ? "SUCCESS" : "FAIL") << "\n";
     cout << "------------------------------\n\n";
 
-    PaymentRequest* req2 = new PaymentRequest("Shubham", "Aditya", 500.0, "USD");
+    PaymentRequest* req2 = new PaymentRequest("vishal", "sonu", 500.0, "INR");
 
     cout << "Processing via Razorpay\n";
     cout << "------------------------------\n";
