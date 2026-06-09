@@ -4,7 +4,8 @@
 #include <algorithm>
 
 using namespace std;
-
+/*2. Notification System
+How to defend it in an interview: Vishal can explain, "I used sandbox APIs (like Twilio test credentials or Mailtrap) to simulate sending 1,000 notifications to verify the routing logic. Because I used the Strategy design pattern, adding a brand new notification type now takes almost half the time it would have with a tightly coupled architecture."*/
 /*============================
       Notification & Decorators
 =============================*/
