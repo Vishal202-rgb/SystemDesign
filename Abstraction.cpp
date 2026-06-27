@@ -19,6 +19,8 @@ also they are hidden under the hood.
 */
 class Car {
 public:
+   //virtual sirf ye bta rha hai hum isko bss declare kr rhe hai define nhi kr rhe hai
+   //-->define krne ki jimaddari child class ke pass hoga jo isko inherit karega
     virtual void startEngine() = 0;
     virtual void shiftGear(int gear) = 0;
     virtual void accelerate() = 0;
@@ -96,7 +98,7 @@ public:
 
 // Main Method
 int main() {
-
+    //passing brand and model
     Car* myCar = new SportsCar("Ford", "Mustang");
 
     myCar->startEngine();
