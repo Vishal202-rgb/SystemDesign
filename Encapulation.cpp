@@ -19,6 +19,7 @@ security to the class members.
 */
 class SportsCar {
 private:
+    //characters
     string brand;
     string model;
     bool isEngineOn;
@@ -37,7 +38,7 @@ public:
         currentGear = 0;
         tyreCompany = "MRF";
     }
-
+    //behaviour-->method
     int getSpeed() {
         return currentSpeed;
     }
