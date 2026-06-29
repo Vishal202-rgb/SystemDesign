@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 
+//Although exceptions are avoided, the client performs explicit type checking using typeid, meaning subclasses are not truly substitutable. The client must know specific child types, so LSP is still violated.
 class Account {
 public:
     virtual void deposit(double amount) = 0;

@@ -5,7 +5,8 @@
 
 using namespace std;
 
-
+//defination->A child class should behave like its parent. If replacing the parent with the child breaks the program, LSP is violated.
+//FixedTermAccount cannot fully substitute Account because it does not support withdrawal. Therefore it violates the Liskov Substitution Principle.
 class DepositOnlyAccount {
 public:
     virtual void deposit(double amount) = 0;
@@ -115,7 +116,3 @@ int main() {
 
     return 0;
 }
-
-    
-    
-    

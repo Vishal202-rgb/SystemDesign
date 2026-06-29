@@ -5,6 +5,7 @@
 
 using namespace std;
 
+//The second code tries to avoid the exception by checking the object type using typeid, but this is still a violation because the client must know about specific child classes. It also hurts extensibility.
 class Account {
 public:
     virtual void deposit(double amount) = 0;
