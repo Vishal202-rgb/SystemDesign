@@ -3,6 +3,8 @@
 
 using namespace std;
 
+//The data is being in (IReport)->Interface expected by the client return json
+
 // 1. Target interface expected by the client
 class IReports {
 public:
@@ -76,9 +78,9 @@ int main() {
     // 4. Client prints the JSON
     Client* client = new Client();
     client->getReport(adapter, rawData);
-    // → Processed JSON: {"name":"Alice", "id":42}
+    // → Processed JSON: {"name":"Alice", "id":42} also have identifying the id ans as well as class name 
 
-    // 5. Cleanup
+    // 5. Cleanup->dekete all the data from the adapter design pattern
     delete adapter;
     delete xmlProv;
     return 0;
