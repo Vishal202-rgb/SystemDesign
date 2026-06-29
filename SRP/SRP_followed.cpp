@@ -8,7 +8,7 @@ class Product {
 public:
     string name;
     double price;
-
+//name & price of the product which you want to see 
     Product(string name, double price) {
         this->name = name;
         this->price = price;
@@ -76,8 +76,8 @@ public:
 int main() {
     ShoppingCart* cart = new ShoppingCart();
 
-    cart->addProduct(new Product("Laptop", 50000));
-    cart->addProduct(new Product("Mouse", 2000));
+    cart->addProduct(new Product("Laptop", 70000));
+    cart->addProduct(new Product("Mouse", 2800));
 
     ShoppingCartPrinter* printer = new ShoppingCartPrinter(cart);
     printer->printInvoice();

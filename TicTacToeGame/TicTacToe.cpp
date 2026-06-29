@@ -2,7 +2,6 @@
 #include <vector>
 #include <queue>
 #include <deque>
-
 using namespace std;
 
 // Observer Pattern - for future notification service

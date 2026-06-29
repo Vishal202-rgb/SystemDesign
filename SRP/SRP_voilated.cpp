@@ -64,3 +64,4 @@ int main() {
 
     return 0;
 }
+//this priciple is goes from the all entities at once in the contamination of the process
