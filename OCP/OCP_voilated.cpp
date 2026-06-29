@@ -3,6 +3,7 @@
 
 using namespace std;
 
+//The second code violates OCP because ShoppingCartStorage contains separate methods for every storage type. Whenever a new database is introduced, we must modify the existing class by adding another method, which increases maintenance effort and the possibility of introducing bugs.
 // Product class representing any item in eCommerce.
 class Product {
 public:

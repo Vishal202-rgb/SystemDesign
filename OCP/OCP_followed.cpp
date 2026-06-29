@@ -3,6 +3,8 @@
 
 using namespace std;
 
+//The first code follows the Open-Closed Principle because it defines an abstract Persistence interface and each storage type (SQL, MongoDB, File) provides its own implementation by overriding save(). If a new storage type like Redis is needed, we simply create a new class without modifying existing code. This makes the system extensible and reduces the risk of breaking tested code.
+//ocp-principle---->A class should be open for extension but closed for modification.
 // Product class representing any item in eCommerce.
 class Product {
 public:
