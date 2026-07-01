@@ -6,6 +6,7 @@
 
 using namespace std;
 
+//Builder Pattern is a Creational Design Pattern used to construct complex objects step-by-step instead of using large constructors or many setters.
 class HttpRequest {
 private:
     string url;
