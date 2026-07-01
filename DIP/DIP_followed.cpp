@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 
+//The first code follows DIP by introducing the Database interface. MySQLDatabase and MongoDBDatabase implement this interface, while UserService depends only on the abstraction. Through dependency injection, any database implementation can be passed to UserService without modifying its code. This makes the design flexible, loosely coupled, and easy to extend
 // Abstraction (Interface)
 class Database {
 public:

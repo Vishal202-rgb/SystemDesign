@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 
+//The second code violates the Dependency Inversion Principle because the high-level module UserService directly depends on concrete implementations (MySQLDatabase and MongoDBDatabase). If a new database is introduced, UserService must be modified, making it tightly coupled.
 class MySQLDatabase {  // Low-level module
 public:
     void saveToSQL(string data) {
@@ -37,3 +38,10 @@ int main() {
     service.storeUserToSQL("Aditya");
     service.storeUserToMongo("Rohit");
 }
+/*
+S → Single Job (One class, one responsibility)
+O → Open to Extend (Add new classes, don't modify old ones)
+L → Legal Substitute (Child must behave like parent)
+I → Implement Only What's Needed (Small, focused interfaces)
+D → Depend on Interfaces, Not Implementations (Use abstraction and dependency injection)
+*/
