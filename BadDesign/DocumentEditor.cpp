@@ -4,7 +4,15 @@
 #include <fstream>
 
 using namespace std;
-
+/*
+Summary of Design Issues
+Problem	                  Explanation
+1.SRP Violation	    DocumentEditor stores data, renders it, identifies element types, and saves files—all in one class.
+2.OCP Violation	    Every new document element (PDF, Video, Table, Audio, etc.) requires modifying renderDocument().
+3.No Polymorphism	Elements are stored as string, so behavior is decided using if-else instead of virtual functions.
+4.DIP Violation	    DocumentEditor directly depends on ofstream, making it difficult to switch to another storage mechanism (database, cloud, PDF, etc.).
+5.Weak Type Safety	An image is identified by checking its filename extension (.jpg, .png) instead of representing it as an Image object.
+*/
 class DocumentEditor {
 private:
     vector<string> documentElements;
