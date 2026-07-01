@@ -3,6 +3,7 @@
 
 using namespace std;
 
+//"Abstraction ko Implementation se alag rakhna, taaki dono independently change ho saken."
 // Implementation Hierarchy: Engine interface (LLL)
 class Engine {
 public:
