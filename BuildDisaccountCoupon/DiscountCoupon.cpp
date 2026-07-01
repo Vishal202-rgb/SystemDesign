@@ -8,6 +8,22 @@
 
 using namespace std;
 
+/* WORKFLOW
+Products
+    ↓
+Shopping Cart
+    ↓
+CouponManager
+    ↓
+Coupon Chain
+(Seasonal → Loyalty → Bulk → Banking)
+    ↓
+Each Coupon uses a Discount Strategy
+    ↓
+Cart Total Updated
+    ↓
+Final Amount Printed
+*/
 // ----------------------------
 // Discount Strategy (Strategy Pattern)
 // ----------------------------
