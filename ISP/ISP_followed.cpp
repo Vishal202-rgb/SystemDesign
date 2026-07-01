@@ -2,6 +2,7 @@
 
 using namespace std;
 
+//The first code follows ISP by splitting the interface into TwoDimensionalShape and ThreeDimensionalShape. 2D shapes implement only area(), while 3D shapes implement both area() and volume(). This results in cleaner, more maintainable, and more extensible code.
 // Separate interface for 2D shapes
 class TwoDimensionalShape {
 public:

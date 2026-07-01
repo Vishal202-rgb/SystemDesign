@@ -3,6 +3,7 @@
 
 using namespace std;
 
+//The second code violates the Interface Segregation Principle because it defines a single Shape interface containing both area() and volume(). This forces 2D shapes like Square and Rectangle to implement volume(), even though it is not applicable, leading to unnecessary methods and runtime exceptions.
 // Single interface for all shapes (Violates ISP)
 class Shape {
 public:
@@ -78,4 +79,4 @@ int main() {
     }
     
     return 0;
-}   
+}
