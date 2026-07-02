@@ -4,7 +4,7 @@
 #include <string>
 
 using namespace std;
-
+//Provide a common way to traverse different data structures (Linked List, Binary Tree, Playlist) without exposing their internal implementation.
 // Iterator & Iterable Hierrarchy
 template<typename T>
 class Iterator {
@@ -12,7 +12,29 @@ public:
     virtual bool hasNext() = 0;
     virtual T next() = 0;
 };
+/*
+OVWERALL STRUCTURE
+                Iterator<T>
+               ----------------
+               +hasNext()
+               +next()
+                    ▲
+                    │
+     --------------------------------------
+     |                |                   |
+LinkedListIterator BinaryTreeIterator PlaylistIterator
 
+
+
+               Iterable<T>
+             ----------------
+             +getIterator()
+                    ▲
+                    │
+      -------------------------------------
+      |               |                  |
+ LinkedList      BinaryTree          Playlist
+*/
 template<typename T>
 class Iterable {
 public:
@@ -221,3 +243,5 @@ int main() {
 
     return 0;
 }
+
+//This makes client code independent of the underlying data structure. If you later add another collection (e.g., a Graph or Hash Table), you only implement a new iterator; existing client code remains unchanged. This is the key benefit of the Iterator Design Pattern.
