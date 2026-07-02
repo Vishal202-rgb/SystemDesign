@@ -4,6 +4,12 @@
 
 using namespace std;
 
+/*
+         ChatMediator
+        /    |     \
+       /     |      \
+   User1   User2   User3
+*/
 // forward‐declare Colleague so IMediator can refer to it
 class Colleague;
 
@@ -33,6 +39,28 @@ public:
     virtual void sendPrivate(const string& to, const string& msg) = 0;
     virtual void receive(const string& from, const string& msg) = 0;
 };
+/*
+BROADCAST FLOW
+Rohan
+
+↓
+
+mediator->send()
+
+↓
+
+Mediator checks mute list
+
+↓
+
+Mediator sends to
+
+Neha
+
+Mohan
+
+etc.
+*/
 
 // ─────────────── Concrete Mediator ───────────────
 class ChatMediator : public IMediator {
@@ -141,3 +169,15 @@ int main() {
     delete chatRoom;
     return 0;
 }
+/*
+| Without Mediator                | With Mediator                       |
+| ------------------------------- | ----------------------------------- |
+| Users know each other           | Users know only mediator            |
+| Tight coupling                  | Loose coupling                      |
+| Communication logic inside User | Communication logic inside Mediator |
+| Duplicate code                  | Centralized code                    |
+| Hard to extend                  | Easy to extend                      |
+| N² relationships                | N relationships                     |
+| Violates SRP                    | Follows SRP                         |
+
+*/

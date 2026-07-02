@@ -7,6 +7,12 @@ using namespace std;
 // If you have N users, you wind up wiring N*(N–1)/2 connections,
 // and every new feature (mute, private send, logging...) lives in User too.
 
+/*
+          User1
+        /   |   \
+       /    |    \
+   User2---User3---User4
+*/
 class User {
 private:
     string name;
