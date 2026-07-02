@@ -1,10 +1,11 @@
 #include <iostream>
 
 using namespace std;
-
+//A subclass should be replaceable with its parent class without changing the correctness of the program.
 // A Postcondition must be statisfied after a method is executed.
 // Sub classes can strengthen the Postcondition but cannot weaken it.
 
+//Postconditions (after the function): The child should promise at least as much as the parent, and it may promise more (stronger or equal).
 class Car {
 protected:
     int speed;    
