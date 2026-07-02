@@ -5,6 +5,7 @@
 
 using namespace std;
 
+//Before making changes to the database, take a snapshot. If something goes wrong, restore the old snapshot (rollback).
 // Memento - Stores database state snapshot
 class DatabaseMemento {
 private:
@@ -19,6 +20,12 @@ public:
         return data;
     }
 };
+/*
+Originator  ----creates---->  Memento
+     ^
+     |
+Caretaker stores the memento
+*/
 
 // Originator - The database whose state we want to save/restore
 class Database {
@@ -78,6 +85,21 @@ public:
         cout << "-----------------------------\n" << endl;
     }
 };
+/*
+Create backup
+
+↓
+
+Store backup
+
+↓
+
+Commit
+
+↓
+
+Rollback
+*/
 
 // Caretaker - Manages the memento (transaction manager)
 class TransactionManager {
@@ -155,3 +177,51 @@ int main() {
     
     return 0;
 }
+
+/*
+Start
+
+↓
+
+Begin Transaction
+
+↓
+
+Take Snapshot
+        │
+        ▼
+     Memento
+
+↓
+
+Modify Database
+
+↓
+
+Error?
+
+├── No
+│
+│   Commit
+│
+│   Delete Backup
+│
+│   Finish
+│
+└── Yes
+    │
+    ▼
+Restore Snapshot
+
+↓
+
+Rollback Complete
+*/
+
+/*
+With the Memento pattern:
+
+Database (Originator) knows how to create and restore its own state.
+DatabaseMemento (Memento) safely stores the snapshot without exposing internal details.
+TransactionManager (Caretaker) simply keeps the backup and decides whether to commit or roll back.
+*/
