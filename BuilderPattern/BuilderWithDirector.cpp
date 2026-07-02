@@ -5,7 +5,24 @@
 #include <map>
 
 using namespace std;
+//Director knows construction process.
+//Builder knows how to build object.
+//ROLE OF DIRECTOR: The Director class is responsible for constructing the object using the builder. It defines the order in which to call the builder methods to create a specific configuration of the object. In this example, the HttpRequestDirector class provides static methods to create specific types of HTTP requests (like GET and JSON POST requests) by orchestrating the builder's methods. This allows for a more organized and reusable way to create complex objects without exposing the construction logic to the client code.
+/*
+Client
 
+↓
+
+Director
+
+↓
+
+Builder
+
+↓
+
+Product
+*/
 class HttpRequest {
 private:
     string url;

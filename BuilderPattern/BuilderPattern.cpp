@@ -5,7 +5,7 @@
 #include <map>
 
 using namespace std;
-
+//"The Builder Pattern is a creational design pattern used to construct complex objects step by step. In this example, HttpRequest has many optional fields such as headers, body, query parameters, and timeout. Instead of using multiple overloaded constructors or mutable setters, the HttpRequestBuilder gradually configures the object using fluent method chaining and finally creates a validated HttpRequest through build(). The Director automates common request configurations like GET and JSON POST, while the Step Builder further improves safety by enforcing the order of required steps at compile time."
 //Builder Pattern is a Creational Design Pattern used to construct complex objects step-by-step instead of using large constructors or many setters.
 class HttpRequest {
 private:

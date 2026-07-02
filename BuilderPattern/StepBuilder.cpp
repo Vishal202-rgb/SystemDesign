@@ -5,7 +5,27 @@
 #include <map>
 
 using namespace std;
+/*
+Simple Builder->Validation at runtime.
+Step Builder->Validation at compile time.
+*/
+/*INTERFACE
+UrlStep
 
+↓
+
+MethodStep
+
+↓
+
+HeaderStep
+
+↓
+
+OptionalStep
+|
+Build
+*/
 class HttpRequest {
 private:
     string url;

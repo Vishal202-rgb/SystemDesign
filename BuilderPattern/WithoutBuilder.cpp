@@ -4,7 +4,64 @@
 #include <map>
 
 using namespace std;
+/*
+Without Builder Pattern
+Telescoping Constructors
 
+You have
+
+1 parameter constructor
+
+2 parameter constructor
+
+3 parameter constructor
+
+4 parameter constructor
+
+5 parameter constructor
+
+6 parameter constructor
+
+Problem?
+
+Too many constructors.
+
+Imagine 15 parameters.
+
+Need
+
+1 constructor
+
+2 constructor
+
+3 constructor
+
+...
+
+15 constructor
+
+Huge mess.
+
+This is called
+
+Telescoping Constructor Problem.
+
+             Client
+                |
+                |
+                V
+      ------------------
+      | HttpRequestBuilder |
+      ------------------
+                |
+                |
+      builds
+                |
+                V
+        ----------------
+        | HttpRequest |
+        ----------------
+*/
 class HttpRequest {
 private:
     string url;                     // required
