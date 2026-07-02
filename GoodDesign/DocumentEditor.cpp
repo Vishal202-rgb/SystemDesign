@@ -5,6 +5,52 @@
 
 using namespace std;
 
+/*
+Document Editor
+      |
+      |
+Persistence Interface
+      |
+ ------------------------
+ |          |           |
+File      Database     Cloud
+*/
+/*
+WORKFLOW
+
+main()
+
+↓
+
+DocumentEditor
+
+↓
+
+Document
+
+↓
+
+TextElement
+ImageElement
+NewLine
+Tab
+
+↓
+
+render()
+
+↓
+
+Persistence
+
+↓
+
+FileStorage
+
+↓
+
+document.txt
+*/
 // Abstraction for document elements
 class DocumentElement {
 public:
@@ -172,3 +218,4 @@ int main() {
 
     return 0;
 }
+//Bridge Design Pattern is a structural design pattern that separates an abstraction from its implementation, allowing both to vary independently. In this example, DocumentEditor is the abstraction and Persistence is the implementation interface. The editor can work with FileStorage, DBStorage, or any future storage implementation without changing its own code.
