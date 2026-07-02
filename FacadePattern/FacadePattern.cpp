@@ -1,6 +1,20 @@
 #include <iostream>
 using namespace std;
 
+/*
+                Client
+                  |
+                  |
+                  V
+          ComputerFacade
+                  |
+   -------------------------------------
+   |      |      |      |      |      |
+   V      V      V      V      V      V
+ Power  Cooling  BIOS  HDD    CPU   Memory
+                   |
+               OperatingSystem
+*/
 // Subsystems
 class PowerSupply {
 public:
@@ -83,3 +97,5 @@ int main() {
 
     return 0;
 }
+
+//Facade Design Pattern provides a single simplified interface to a set of complex subsystem classes. Instead of interacting with multiple classes directly, the client communicates with one Facade object, which coordinates all subsystem operations internally. In this example, ComputerFacade hides the entire computer boot process behind a single startComputer() method.
