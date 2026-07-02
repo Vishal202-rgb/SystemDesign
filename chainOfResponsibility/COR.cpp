@@ -1,7 +1,8 @@
 #include <iostream>
 using namespace std;
-
+//"This code implements the Chain of Responsibility pattern. Each denomination (₹1000, ₹500, ₹200, ₹100) is represented by a separate handler. When a withdrawal request arrives, each handler dispenses as many notes of its denomination as possible and forwards the remaining amount to the next handler. The client only interacts with the first handler, making the system loosely coupled, easy to extend with new denominations, and compliant with the Open/Closed Principle."
 // Abstract Handler (Base Class)
+//Chain of Responsibility is a Behavioral Design Pattern in which a request is passed through a chain of handlers until one or more handlers process it.
 class MoneyHandler {
 protected:
     MoneyHandler *nextHandler;
@@ -17,7 +18,25 @@ public:
 
     virtual void dispense(int amount) = 0;
 };
-
+/*OVERALL ARCHITECTURE
+          Client
+             |
+             |
+             V
+     ThousandHandler
+             |
+             V
+     FiveHundredHandler
+             |
+             V
+     TwoHundredHandler
+             |
+             V
+      HundredHandler
+             |
+             V
+          NullHandler
+*/
 class ThousandHandler : public MoneyHandler {
 private:
     int numNotes;
@@ -174,3 +193,10 @@ int main() {
 
     return 0;
 }
+
+/*
+Q5. Which SOLID principles are followed?
+->Single Responsibility Principle (SRP): Each handler manages one denomination.
+->Open/Closed Principle (OCP): New denominations can be added by creating new handlers.
+->Liskov Substitution Principle (LSP): Every concrete handler can be used wherever a MoneyHandler is expected.
+*/
