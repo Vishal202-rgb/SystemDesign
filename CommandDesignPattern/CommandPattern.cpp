@@ -1,7 +1,25 @@
 #include <iostream>
 using namespace std;
 
-// Command Interface
+//Command Pattern encapsulates a request as an object, allowing you to parameterize clients with requests, queue operations, log them, and support undo/redo functionality.
+/*
+overall architecture
+          Client
+             |
+             |
+             V
+    RemoteController (Invoker)
+             |
+             |
+        Command Interface
+        /              \
+       /                \
+LightCommand        FanCommand
+      |                  |
+      |                  |
+    Light              Fan
+*/
+//Command Interface
 class Command {
 public:
     virtual void execute() = 0;
@@ -141,3 +159,6 @@ int main() {
 
     return 0;
 }
+/*
+"This code implements the Command Design Pattern. RemoteController acts as the invoker and stores Command objects instead of directly controlling devices. LightCommand and FanCommand are concrete commands that encapsulate requests and delegate the work to their respective receivers (Light and Fan). Pressing a button executes the command, while pressing it again calls undo(), giving a toggle behavior. This design decouples the remote from device implementations, supports undo functionality, and makes it easy to add new devices without modifying the remote controller."
+*/
