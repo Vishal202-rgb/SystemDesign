@@ -2,14 +2,24 @@
 #include <string>
 
 using namespace std;
-
+//Decorator Pattern allows us to add new functionality (behavior) to an object dynamically at runtime without modifying its original class.
 // Component Interface: defines a common interface for Mario and all power-up decorators.
 class Character {
 public:
     virtual string getAbilities() const = 0;
     virtual ~Character() {}  // Virtual destructor
 };
-
+/*
+                 Character
+                     ▲
+          ___________|____________
+         |                        |
+       Mario          CharacterDecorator
+                             ▲
+            _________________|__________________
+           |                 |                 |
+      HeightUp        GunPowerUp      StarPowerUp
+*/
 // Concrete Component: Basic Mario character with no power-ups.
 class Mario : public Character {
 public:
@@ -85,3 +95,4 @@ int main() {
 
     return 0;
 }
+//"This code implements the Decorator Design Pattern. Character is the common interface, Mario is the concrete component, and HeightUp, GunPowerUp, and StarPowerUp are concrete decorators. Each decorator wraps another Character, delegates the original behavior using getAbilities(), and appends its own functionality. This allows power-ups to be added dynamically at runtime without modifying the Mario class or creating subclasses for every possible combination of abilities."
