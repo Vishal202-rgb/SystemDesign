@@ -4,8 +4,19 @@
 #include <stdexcept>
 
 using namespace std;
-
-// Base interface for files and folders
+//Composite Pattern allows you to treat individual objects (Leaf) and groups of objects (Composite) in the same way.
+//Base interface for files and folders
+/*
+                FileSystemItem
+                      ▲
+            __________|___________
+           |                      |
+         File                 Folder
+        (Leaf)             (Composite)
+                                 |
+                                 |
+                     vector<FileSystemItem*>
+*/
 class FileSystemItem {
 public:
     virtual ~FileSystemItem() {}
@@ -144,3 +155,7 @@ int main() {
     delete root;
     return 0;
 }
+
+/*
+"This code implements the Composite Design Pattern. FileSystemItem is the common component interface, File is the leaf, and Folder is the composite that stores a collection of FileSystemItem objects. Because both files and folders implement the same interface, the client can treat them uniformly. Recursive operations like openAll() and getSize() work naturally over the tree structure, making the design scalable, extensible, and ideal for hierarchical data such as file systems."
+*/
