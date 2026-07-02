@@ -7,6 +7,7 @@
 #include <chrono>
 using namespace std;
 
+//Flyweight Design Pattern is a structural design pattern that reduces memory usage by sharing common (intrinsic) state among multiple objects while storing unique (extrinsic) state separately. It is especially useful when an application needs to create a very large number of similar objects, such as game characters, particles, trees, or asteroids.
 class Asteroid {
 private:
     // Intrinsic properties (same for many asteroids) - DUPLICATED FOR EACH OBJECT

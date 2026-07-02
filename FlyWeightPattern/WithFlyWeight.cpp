@@ -7,6 +7,37 @@
 #include <chrono>
 using namespace std;
 
+/*
+Problem
+
+Suppose game me 10 lakh asteroids hain.
+
+Har asteroid ke paas:
+
+Same information (Intrinsic State)
+
+Color
+Texture
+Material
+Length
+Width
+Weight
+
+Aur
+
+Different information (Extrinsic State)
+
+Position X
+Position Y
+Velocity X
+Velocity Y
+
+Agar har asteroid ke andar sab kuch store karoge,
+
+to same color, texture, material lakhon baar duplicate honge.
+
+Isi duplication ko Flyweight remove karta hai.
+*/
 // Flyweight - Stores INTRINSIC state only
 class AsteroidFlyweight {
 private: 
@@ -43,6 +74,27 @@ public:
                 32 * 3;                     // Approximate string data
     }
 };
+/*
+                 Client
+                    |
+                    |
+                    V
+            SpaceGameWithFlyweight
+                    |
+         --------------------------
+         |                        |
+         V                        V
+ AsteroidContext           AsteroidFactory
+(Position,Velocity)             |
+        |                       |
+        |                returns shared
+        |                       |
+        --------> AsteroidFlyweight
+                 (Color, Texture,
+                  Material,
+                  Size,
+                  Weight)
+*/
 
 // Flyweight Factory
 class AsteroidFactory {
