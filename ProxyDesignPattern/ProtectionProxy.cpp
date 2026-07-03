@@ -3,6 +3,15 @@
 
 using namespace std;
 
+/*
+            Client
+               |
+               v
+         Proxy (Same Interface)
+               |
+               v
+          Real Subject
+*/
 // Interface for Document Reader
 class IDocumentReader {
 public:
@@ -20,6 +29,22 @@ public:
     }
 };
 
+/*
+Client
+   |
+   v
+DocumentProxy
+   |
+   |-- Is user premium?
+   |      |
+   |      | No
+   |      v
+   |   Access Denied
+   |
+   | Yes
+   v
+RealDocumentReader
+*/
 // User class with membership status
 class User {
 public:

@@ -2,7 +2,25 @@
 #include<string>
 
 using namespace std;
+/*
+Client
 
+↓
+
+DataServiceProxy
+
+↓
+
+Network
+
+↓
+
+Remote Server
+
+↓
+
+RealDataService
+*/
 class IDataService {
 public:
     virtual string fetchData() = 0;

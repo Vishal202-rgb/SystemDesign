@@ -3,6 +3,28 @@
 
 using namespace std;
 
+/*
+ImageProxy
+
+↓
+
+Load image
+
+↓
+
+Display
+
+STEP-2
+ImageProxy
+
+↓
+
+Already loaded
+
+↓
+
+Display
+*/
 class IImage { 
 public:
     virtual void display() = 0;
@@ -49,3 +71,12 @@ int main() {
     
 }
     
+/*
+| Protection Proxy           | Remote Proxy                         | Virtual Proxy                           |
+| -------------------------- | ------------------------------------ | --------------------------------------- |
+| Controls access            | Represents a remote object           | Delays object creation                  |
+| Checks permissions         | Handles networking                   | Performs lazy initialization            |
+| Real object already exists | Real object may be on another server | Real object is created only when needed |
+| Example: Premium users     | Example: Web service                 | Example: Large image                    |
+
+*/
