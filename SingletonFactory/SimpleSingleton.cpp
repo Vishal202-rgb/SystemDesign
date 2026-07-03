@@ -2,6 +2,17 @@
 
 using namespace std;
 
+/* BOTH HAVE CREATE A SIMILAR OBJECT
+Thread 1
+
+instance == nullptr
+
+--------------------
+
+Thread 2
+
+instance == nullptr
+*/
 class Singleton {
 private:
     static Singleton* instance;
