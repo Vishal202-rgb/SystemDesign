@@ -5,6 +5,32 @@
 
 using namespace std;
 
+//The Observer Pattern defines a one-to-many dependency between objects so that when one object (Subject) changes its state, all its dependent objects (Observers) are automatically notified.
+/*
+               uploadVideo()
+
+                     │
+                     ▼
+
+              +--------------+
+              |   Channel    |
+              +--------------+
+                     │
+      notifySubscribers()
+                     │
+      ┌──────────────┴──────────────┐
+      ▼                             ▼
+
++-------------+             +-------------+
+| Subscriber1 |             | Subscriber2 |
++-------------+             +-------------+
+      │                             │
+      ▼                             ▼
+  update()                     update()
+      │                             │
+      ▼                             ▼
+Print notification          Print notification
+*/
 class ISubscriber {
 public:
     virtual void update() = 0;
@@ -83,6 +109,21 @@ public:
     }
 };
 
+/*
+latestVideo = ...
+
+↓
+
+notifySubscribers()
+
+↓
+
+Varun.update()
+
+↓
+
+Tarun.update()
+*/
 int main() {
     // Create a channel and subscribers
     Channel* channel = new Channel("CoderArmy");
@@ -105,3 +146,19 @@ int main() {
 
     return 0;
 } 
+/*
+#Advantages
+Loose coupling between subject and observers.
+Easy to add or remove subscribers at runtime.
+Supports one-to-many relationships.
+Follows the Open/Closed Principle.
+Commonly used in event-driven systems.
+
+
+#Real-world examples
+YouTube → Channel uploads a video → Subscribers receive notifications.
+Instagram → Followed user posts → Followers are notified.
+Stock Market → Stock price changes → Investors get updates.
+Weather App → Weather changes → All registered users receive alerts.
+News Apps → Breaking news → Push notifications to subscribers.
+*/
