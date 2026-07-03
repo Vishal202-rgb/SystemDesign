@@ -5,6 +5,15 @@ using namespace std;
 // Sub class methods should not be allowed state changes What
 // Base class never allowed.
 
+/*
+| Invariant                                     | History Constraint                                                     |
+| --------------------------------------------- | ---------------------------------------------------------------------- |
+| Object state must always satisfy a condition. | Allowed sequence of operations must not become more restrictive.       |
+| Example: balance ≥ 0                          | Example: withdraw should remain available if the base class allows it. |
+| Child cannot create an invalid state.         | Child cannot remove or forbid previously valid behavior.               |
+| Concerned with **state correctness**.         | Concerned with **behavior over time**.                                 |
+
+*/
 class BankAccount {
 protected:
     double balance;

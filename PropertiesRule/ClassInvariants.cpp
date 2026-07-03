@@ -5,6 +5,15 @@ using namespace std;
 // Class Invariant of a parent class Object should not be broken by child class Object.
 // Hence child class can either maintain or strengthen the invariant but never narrows it down.
 
+/*
+Rule
+
+A subclass
+
+✔ may maintain the invariant
+✔ may strengthen the invariant
+❌ must never weaken it
+*/
 //Invariant : Balance cannot be negative
 class BankAccount {
 protected:
