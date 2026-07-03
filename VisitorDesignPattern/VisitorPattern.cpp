@@ -5,6 +5,17 @@
 
 using namespace std;
 
+/*
+ImageFile
+VideoFile
+TextFile
+        ↑
+        |
+    accept()
+        |
+        ↓
+Visitor
+*/
 // Forward declarations for all file types
 class TextFile;
 class ImageFile;
