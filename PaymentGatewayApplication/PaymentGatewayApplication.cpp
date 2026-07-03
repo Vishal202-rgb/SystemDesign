@@ -6,6 +6,46 @@
 
 using namespace std;
 /*
+Client
+   |
+   v
+PaymentController (Singleton)
+   |
+   v
+GatewayFactory (Singleton)
+   |
+   v
+Creates
+   |
+   +--> PaytmGateway
+   |
+   +--> RazorpayGateway
+           |
+           v
+Wrapped inside
+PaymentGatewayProxy (Proxy Pattern)
+           |
+           v
+PaymentService (Singleton)
+           |
+           v
+Template Method
+processPayment()
+      |
+      +--> validatePayment()
+      |
+      +--> initiatePayment()
+      |         |
+      |         v
+      |   BankingSystem (Strategy)
+      |        |
+      |        +--> PaytmBankingSystem
+      |        |
+      |        +--> RazorpayBankingSystem
+      |
+      +--> confirmPayment()
+*/
+/*
 1. Payment Gateway Application
 How to defend it in an interview: If asked, Vishal can simply say, "Since it wasn't deployed to real users, I used a tool like Postman (or wrote a script) to send 500 simultaneous checkout requests to my local server to ensure the database wouldn't crash or duplicate data."*/
 // ----------------------------
@@ -313,3 +353,5 @@ int main() {
 
     return 0;
 }
+
+//"This project simulates a payment gateway like Paytm or Razorpay using multiple design patterns. The overall payment flow is implemented using the Template Method Pattern, where every gateway follows the steps: validate, initiate, and confirm payment. The actual banking logic is abstracted using the Strategy Pattern, allowing different banking systems to be plugged in without changing the gateway. To improve reliability, I wrapped each gateway in a Proxy, which adds retry logic transparently. Gateway creation is centralized through a Factory Pattern, so clients don't instantiate gateway objects directly. Finally, Singletons are used for the controller, service, and factory to ensure a single shared instance across the application. This design keeps the code modular, extensible, and aligned with SOLID principles."
