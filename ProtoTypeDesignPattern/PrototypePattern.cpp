@@ -10,6 +10,27 @@ public:
     virtual ~Cloneable() {}
 };
 
+/*
+           Prototype Interface
+          ---------------------
+          + clone()            |
+          ---------------------
+                   ▲
+                   |
+               implements
+                   |
+           ----------------
+           |      NPC      |
+           |---------------|
+           | clone()       |
+           ----------------
+                   |
+         uses Copy Constructor
+                   |
+          ------------------
+          | new NPC(*this) |
+          ------------------
+*/
 class NPC : public Cloneable {
 public:
     string name;
@@ -79,5 +100,16 @@ int main() {
     delete alienCopied1;
     delete alienCopied2;
 }
+/*
+| Without Prototype            | With Prototype                       |
+| ---------------------------- | ------------------------------------ |
+| Heavy constructor every time | Heavy constructor only once          |
+| Duplicate initialization     | Copy existing object                 |
+| Re-enter all values          | Copy all fields automatically        |
+| Slower                       | Faster                               |
+| Error-prone                  | Less error-prone                     |
+| Good for simple objects      | Best for expensive-to-create objects |
+
+*/
 
         

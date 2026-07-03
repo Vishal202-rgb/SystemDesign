@@ -3,6 +3,16 @@
 #include <vector>
 using namespace std;
 
+/*
+Problems:
+Every time you create an object, you call the constructor.
+
+1.Constructor runs repeatedly.
+2.Database/API calls happen repeatedly.
+3.Easy to mistype values.
+4.Duplicate initialization code.
+5.Slow.
+*/
 // Simple NPC class — no Prototype
 class NPC {
 public:
