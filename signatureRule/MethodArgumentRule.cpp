@@ -4,7 +4,8 @@ using namespace std;
 
 // Method Argument Rule : 
 // Subtype method arguments can be identical or wider than the supertype
-// C++ imposes this by keeping singature identical
+// A subclass cannot require more restrictive arguments than the parent.
+// C++ imposes this by keeping signature identical
 
 class Parent {
 public:
