@@ -3,6 +3,28 @@
 
 using namespace std;
 
+/*
+                  +----------------------+
+                  |    ModelTrainer      |
+                  +----------------------+
+                  | trainPipeline()      |  <-- Template Method
+                  | loadData()           |
+                  | preprocessData()     |
+                  | trainModel() = 0     |
+                  | evaluateModel() = 0  |
+                  | saveModel()          |
+                  +----------^-----------+
+                             |
+             -------------------------------
+             |                             |
++--------------------------+    +---------------------------+
+| NeuralNetworkTrainer     |    | DecisionTreeTrainer       |
++--------------------------+    +---------------------------+
+| trainModel()             |    | trainModel()              |
+| evaluateModel()          |    | evaluateModel()           |
+| saveModel()              |    | uses default saveModel()  |
++--------------------------+    +---------------------------+
+*/
 // ───────────────────────────────────────────────────────────
 // 1. Base class defining the template method
 // ───────────────────────────────────────────────────────────
