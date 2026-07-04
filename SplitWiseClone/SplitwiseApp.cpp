@@ -8,6 +8,29 @@
 
 using namespace std;
 
+/*
+                    Splitwise (Singleton + Facade)
+                           |
+        ---------------------------------------------
+        |                  |                        |
+      Users             Groups                  Expenses
+                           |
+                    ----------------
+                    |              |
+               Members         Group Expenses
+                    |
+                 Observer
+                    |
+                  User
+
+                  Group
+                   |
+                notifyMembers()
+                   |
+            -------------------------
+                |        |        |
+                User1   User2   User3
+*/
 // Forward declarations
 class User;
 class Group;
@@ -19,6 +42,31 @@ enum class SplitType {
     PERCENTAGE
 };
 
+/*
+Client
+   |
+Splitwise
+   |
+Create Users
+   |
+Create Group
+   |
+Add Members
+   |
+Add Expense
+   |
+SplitFactory
+   |
+SplitStrategy
+   |
+Update Group Balances
+   |
+Notify Members
+   |
+Debt Simplification
+   |
+Settlement
+*/
 class Split {
 public:
     string userId;
@@ -30,6 +78,16 @@ public:
     }
 };
 
+/*
+| Pattern            | Where Used                                                     | Purpose                                                             |
+| ------------------ | -------------------------------------------------------------- | ------------------------------------------------------------------- |
+| **Singleton**      | `Splitwise`                                                    | Only one instance of the expense manager exists.                    |
+| **Facade**         | `Splitwise`                                                    | Provides a simple API for users, groups, expenses, and settlements. |
+| **Strategy**       | `SplitStrategy`, `EqualSplit`, `ExactSplit`, `PercentageSplit` | Different expense splitting algorithms.                             |
+| **Simple Factory** | `SplitFactory`                                                 | Creates the appropriate split strategy.                             |
+| **Observer**       | `Observer`, `User`, `Group::notifyMembers()`                   | Sends notifications whenever an expense or settlement occurs.       |
+
+*/
 // Observer Pattern - Notification interface
 class Observer {
 public:
