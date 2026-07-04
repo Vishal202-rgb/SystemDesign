@@ -3,6 +3,7 @@
 
 using namespace std;
 
+//The State Pattern allows an object to change its behavior when its internal state changes.
 // Forward declaration
 class VendingMachine;
 
@@ -12,6 +13,40 @@ class HasCoinState;
 class DispenseState;
 class SoldOutState;
 
+/*
+                +----------------+
+                |   NO_COIN      |
+                +----------------+
+                       |
+                 insertCoin()
+                       |
+                       v
+                +----------------+
+                |   HAS_COIN     |
+                +----------------+
+                 |           |
+ insufficient    |           | enough money
+ funds           |           |
+                 |           v
+                 |    +---------------+
+                 +--> |  DISPENSING   |
+                      +---------------+
+                             |
+                             |
+                  items left |  no items left
+                             |
+               +-------------+-------------+
+               |                           |
+               v                           v
+        +-------------+             +--------------+
+        |  NO_COIN    |             |  SOLD_OUT    |
+        +-------------+             +--------------+
+                                          |
+                                     refill()
+                                          |
+                                          v
+                                     NO_COIN
+*/
 // Abstract State Interface
 class VendingState {
 public:
