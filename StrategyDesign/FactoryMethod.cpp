@@ -2,6 +2,25 @@
 
 using namespace std;
 
+/*
+BurgerFactory
+      |
+ -----------------
+ |               |
+SinghBurger   KingBurger
+
+#SinghBurger  
+
+basic
+standard
+premium
+
+#KingBurger
+
+basic wheat
+standard wheat
+premium wheat
+*/
 // Product Class and subclasses
 class Burger {
 public:

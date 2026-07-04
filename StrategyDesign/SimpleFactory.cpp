@@ -2,6 +2,18 @@
 
 using namespace std;
 
+/*
+BurgerFactory
+
+      |
+      |
+  createBurger()
+
+      |
+ -------------------------
+ |          |            |
+Basic    Standard     Premium
+*/
 class Burger {
 public:
     virtual void prepare() = 0;  // Pure virtual function

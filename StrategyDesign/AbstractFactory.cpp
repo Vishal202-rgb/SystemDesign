@@ -2,6 +2,21 @@
 
 using namespace std;
 
+/*
+Burger
+ ├── BasicBurger
+ ├── StandardBurger
+ ├── PremiumBurger
+ ├── BasicWheatBurger
+ ├── StandardWheatBurger
+ └── PremiumWheatBurger
+
+GarlicBread
+ ├── BasicGarlicBread
+ ├── CheeseGarlicBread
+ ├── BasicWheatGarlicBread
+ └── CheeseWheatGarlicBread
+*/
 // Product 1 --> Burger
 class Burger {
 public:

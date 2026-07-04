@@ -1,6 +1,14 @@
 #include <iostream>
 using namespace std;
 
+/*
+Robot
+
+      |
+ -------------------------
+ |          |            |
+Walk      Talk         Fly
+*/
 // --- Strategy Interface for Walk ---
 class WalkableRobot {
 public:
@@ -133,3 +141,16 @@ int main() {
 
     return 0;
 }
+
+/*
+| Feature                     | Simple Factory       | Factory Method                         | Abstract Factory                              | Strategy                              |
+| --------------------------- | -------------------- | -------------------------------------- | --------------------------------------------- | ------------------------------------- |
+| Creates objects             | ✅                    | ✅                                      | ✅                                             | ❌                                     |
+| Uses inheritance            | ❌                    | ✅                                      | ✅                                             | ❌ (uses composition)                  |
+| Creates one product family  | ✅                    | ✅                                      | ❌ (creates multiple related product families) | ❌                                     |
+| Multiple factories          | ❌                    | ✅                                      | ✅                                             | ❌                                     |
+| Multiple product types      | ❌                    | ❌                                      | ✅                                             | ❌                                     |
+| Changes behavior at runtime | ❌                    | ❌                                      | ❌                                             | ✅                                     |
+| Main principle              | Centralized creation | Delegate object creation to subclasses | Create related object families                | Encapsulate interchangeable behaviors |
+
+*/
