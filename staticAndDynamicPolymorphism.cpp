@@ -3,6 +3,9 @@
 
 using namespace std;
 
+/*
+Program 1 demonstrates both compile-time and run-time polymorphism. Compile-time polymorphism is achieved through method overloading (accelerate() and accelerate(int)), while run-time polymorphism is achieved using virtual functions and method overriding in ManualCar and ElectricCar, accessed through a Car* base pointer.
+*/
 // Base Car class
 class Car {
 protected:
@@ -11,7 +14,9 @@ protected:
     bool isEngineOn;
     int currentSpeed;
 
+
 public:
+
     Car(string brand, string model) {
         this->brand = brand;
         this->model = model;

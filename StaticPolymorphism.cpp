@@ -11,6 +11,9 @@ specific amount you request. In programming, we achieve this via method
 overloading: multiple methods with the same name but different signatures.
 */
 
+//Program 2 demonstrates only compile-time polymorphism because it uses method overloading without inheritance or virtual functions. The compiler decides which overloaded accelerate() method to call based on the function arguments during compilation.
+
+
 class ManualCar {
 
 private:
