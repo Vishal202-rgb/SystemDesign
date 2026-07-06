@@ -4,6 +4,8 @@
 #include <deque>
 using namespace std;
 
+
+//This all are follow the SOLID principles and design patterns. The code is modular, maintainable, and extensible. It uses the Observer pattern for notifications, Strategy pattern for game rules, and Factory pattern for game creation. The Board class is a dumb object that only manages the grid, while the TicTacToeGame class is the main controller that orchestrates the game flow. The TicTacToePlayer class represents a player with a unique symbol and score tracking.
 // Observer Pattern - for future notification service
 class IObserver {
 public:
