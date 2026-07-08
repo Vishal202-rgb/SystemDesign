@@ -112,6 +112,8 @@ public:
         }
         (*stock)[sku] += qty;
     }
+//also have a follow the solid principle
+//similar to the tinder clone
 
     void removeProduct(int sku, int qty) override {
         if (stock->count(sku) == 0) 

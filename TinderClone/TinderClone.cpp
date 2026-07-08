@@ -458,7 +458,7 @@ public:
 };
 
 // -------------------- User System -------------------- //
-
+//Also follow the SOLID Principles, especially the Single Responsibility Principle (SRP) and the Open/Closed Principle (OCP). Each class has a single responsibility, and the system is designed to be open for extension but closed for modification.
 // Swipe action enum
 enum class SwipeAction {
     LEFT,  // Dislike
