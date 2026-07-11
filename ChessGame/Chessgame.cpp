@@ -29,7 +29,8 @@ class Board;
 class Piece;
 class Match;
 class User;
-
+//They will also Follow the Mediator Pattern for communication between players and the match
+// The Board class will be a dumb object that manages pieces and their positions, while the Match class will handle the game logic and rules. The Piece class will follow the Strategy Pattern to define movement rules for each piece type. The User class will represent players and will also follow the Mediator Pattern for communication between players and the match.
 // Position class to represent coordinates
 class Position {
 private:
