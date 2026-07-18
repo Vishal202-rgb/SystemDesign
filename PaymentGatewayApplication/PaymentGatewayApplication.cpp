@@ -3,7 +3,10 @@
 #include <cstdlib>
 #include <ctime>
 
-
+/*
+1. Payment Gateway Application
+How to defend it in an interview: If asked, Vishal can simply say, "Since it wasn't deployed to real users, I used a tool like Postman (or wrote a script) to send 500 simultaneous checkout requests to my local server to ensure the database wouldn't crash or duplicate data."
+*/
 using namespace std;
 /*
 Client
