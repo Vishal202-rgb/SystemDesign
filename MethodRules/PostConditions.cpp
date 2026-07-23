@@ -8,10 +8,12 @@ using namespace std;
 //Postconditions (after the function): The child should promise at least as much as the parent, and it may promise more (stronger or equal).
 class Car {
 protected:
+//int speed; // Speed of the car 
     int speed;    
 
 public:
     Car() {
+        //speed = 0; // Initial speed of the car
         speed = 0;
     }
     
