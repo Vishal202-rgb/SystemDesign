@@ -79,6 +79,7 @@ private:
     OperatingSystem os;
 
 public:
+//this function is the facade method that simplifies the complex interactions of the subsystems into a single method call for the client.
     void startComputer() {
         cout << "----- Starting Computer -----" << endl;
         powerSupply.providePower();
