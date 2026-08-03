@@ -139,7 +139,7 @@ public:
        cout << "Please insert coin first!" <<endl;
         return machine->getNoCoinState(); // Stay in same state
     }
-    
+    // Dispense item without coin
     VendingState* dispense(VendingMachine* machine) override {
        cout << "Please insert coin and select item first!" <<endl;
         return machine->getNoCoinState(); // Stay in same state
