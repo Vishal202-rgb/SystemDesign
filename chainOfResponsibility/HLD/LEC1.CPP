@@ -4,6 +4,7 @@ using namespace std;
 
 class Server {
 public:
+
     int id;
 
     Server(int id) {
@@ -75,3 +76,23 @@ int main() {
 
     return 0;
 }
+
+/*Client
+  ↓
+CDN
+  ↓
+API Gateway
+  ↓
+Load Balancer
+  ↓
+┌──────────┬──────────┬──────────┐
+Auth       User       Order
+Service    Service    Service
+   └──────────┬──────────┘
+              ↓
+          Message Queue
+              ↓
+          Workers
+              ↓
+          Database
+*/
