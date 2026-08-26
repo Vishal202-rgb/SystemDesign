@@ -4,7 +4,6 @@ using namespace std;
 
 class Server {
 public:
-
     int id;
 
     Server(int id) {
