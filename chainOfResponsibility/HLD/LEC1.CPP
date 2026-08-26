@@ -14,6 +14,11 @@ public:
     void handleRequest() {
         cout << "Request handled by Server " << id << endl;
     }
+     void setHealth(bool status) {
+        healthy = status;
+    }
+private:
+    bool healthy = true;
 };
 
  /*                 Load Balancer
@@ -72,6 +77,22 @@ int main() {
         Server* server = lb.routeRequest();
 
         server->handleRequest();
+    }
+     cout << "\n----- SERVER 2 DOWN -----\n";
+
+    s2.setHealth(false);
+
+
+    for (int i = 0; i < 6; i++) {
+
+        Server* server = lb.routeRequest();
+
+        if (server != nullptr) {
+            server->handleRequest();
+        }
+        else {
+            cout << "No healthy server available\n";
+        }
     }
 
     return 0;
