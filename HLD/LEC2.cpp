@@ -305,4 +305,20 @@ int main() {
                   Minimal Remapping
                          ↓
                  Weighted Nodes
+           
+*/
+
+/*
+    4 physical servers and 4 virtual nodes per server
+                        HASH RING
+                             
+                     ┌──────────────┐
+                  ● S1-V0       S2-V0 ●
+              ● S1-V1               S2-V1 ●
+           ● S4-V0                       S2-V2 ●
+           ● S4-V1                       S2-V3 ●
+              ● S3-V3               S1-V2 ●
+                  ● S3-V2       S1-V3 ●
+                     └─────●─────┘
+                         S3-V0
 */
