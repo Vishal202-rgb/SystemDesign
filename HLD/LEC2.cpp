@@ -9,7 +9,31 @@
 
 using namespace std;
 
-
+/*
+                    CLIENT
+                       |
+                       ↓
+                LOAD BALANCER
+                       |
+                ┌──────┴──────┐
+                ↓             ↓
+             SERVER 1       SERVER 2
+                |             |
+                └──────┬──────┘
+                       ↓
+                     REDIS
+                   /       \
+              CACHE HIT   CACHE MISS
+                  |           |
+                  ↓           ↓
+               RESPONSE    DATABASE
+                               |
+                               ↓
+                            REDIS
+                               |
+                               ↓
+                           RESPONSE
+*/
 // ======================================================
 // SERVER
 // ======================================================
