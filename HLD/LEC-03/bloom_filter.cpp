@@ -8,69 +8,99 @@ using namespace std;
 class BloomFilter {
 
 private:
-
     vector<bool> bits;
     int size;
+    int hashCount;
 
-    // First hash function
-    int hash1(const string& key) {
-        return hash<string>{}(key) % size;
-    }
+    // Generate different hash values
+    int getHash(const string& key, int seed) {
+        string value = key + to_string(seed);
 
-    // Second hash function
-    int hash2(const string& key) {
-        return (hash<string>{}(key + "salt")) % size;
+        return hash<string>{}(value) % size;
     }
 
 public:
 
-    BloomFilter(int size) {
+    // Constructor
+    BloomFilter(int size, int hashCount) {
         this->size = size;
+        this->hashCount = hashCount;
+
         bits.resize(size, false);
     }
 
     // Add an item
     void add(const string& key) {
 
-        int index1 = hash1(key);
-        int index2 = hash2(key);
+        for (int i = 0; i < hashCount; i++) {
 
-        bits[index1] = true;
-        bits[index2] = true;
+            int index = getHash(key, i);
+
+            bits[index] = true;
+        }
     }
 
-    // Check whether item may exist
+    // Check whether an item may exist
     bool mightContain(const string& key) {
 
-        int index1 = hash1(key);
-        int index2 = hash2(key);
+        for (int i = 0; i < hashCount; i++) {
 
-        return bits[index1] && bits[index2];
+            int index = getHash(key, i);
+
+            // One bit is false -> definitely not present
+            if (!bits[index]) {
+                return false;
+            }
+        }
+
+        // All bits are true -> may be present
+        return true;
     }
 };
 
 
 int main() {
 
-    BloomFilter filter(10);
+    // Create Bloom Filter
+    // 20 bits and 3 hash functions
+    BloomFilter filter(20, 3);
 
-    // Add users
+
+    // Add some items
     filter.add("vishal");
     filter.add("rahul");
     filter.add("aman");
 
 
-    // Check users
+    // Check items
     cout << "vishal: "
-         << filter.mightContain("vishal")
+         << (filter.mightContain("vishal")
+             ? "MAYBE PRESENT"
+             : "NOT PRESENT")
          << endl;
+
 
     cout << "rahul: "
-         << filter.mightContain("rahul")
+         << (filter.mightContain("rahul")
+             ? "MAYBE PRESENT"
+             : "NOT PRESENT")
          << endl;
 
+
     cout << "aman: "
-         << filter.mightContain("aman")
+         << (filter.mightContain("aman")
+             ? "MAYBE PRESENT"
+             : "NOT PRESENT")
+         << endl;
+
+
+    // This item was never added.
+    // It may still return MAYBE because
+    // of a false positive.
+    cout << "rohit: "
+         << (filter.mightContain("rohit")
+             ? "MAYBE PRESENT"
+             : "NOT PRESENT")
          << endl;
 
 
