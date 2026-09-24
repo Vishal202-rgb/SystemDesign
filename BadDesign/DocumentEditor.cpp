@@ -2,6 +2,8 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include <memory> // Required for unique_ptr and make_unique
+#include <utility> // Required for std::move
 
 using namespace std;
 /*
@@ -13,60 +15,92 @@ Problem	                  Explanation
 4.DIP Violation	    DocumentEditor directly depends on ofstream, making it difficult to switch to another storage mechanism (database, cloud, PDF, etc.).
 5.Weak Type Safety	An image is identified by checking its filename extension (.jpg, .png) instead of representing it as an Image object.
 */
-class DocumentEditor {
+
+// Abstract base class for document elements
+class DocumentElement {
+public:
+    virtual ~DocumentElement() = default;
+    virtual string render() const = 0;
+};
+
+// Concrete class for text elements
+class TextElement : public DocumentElement {
 private:
-    vector<string> documentElements;
-    string renderedDocument;
+    string text;
+public:
+    TextElement(string t) : text(std::move(t)) {}
+    string render() const override {
+        return text;
+    }
+};
+
+// Concrete class for image elements
+class ImageElement : public DocumentElement {
+private:
+    string imagePath;
+public:
+    ImageElement(string path) : imagePath(std::move(path)) {}
+    string render() const override {
+        return "[Image: " + imagePath + "]";
+    }
+};
+
+// Document class to manage a collection of DocumentElements
+class Document {
+private:
+    vector<unique_ptr<DocumentElement>> elements;
 
 public:
-    // Adds text as a plain string
-    void addText(string text) {
-        documentElements.push_back(text);
+    void addElement(unique_ptr<DocumentElement> element) {
+        elements.push_back(std::move(element));
     }
 
-    // Adds an image represented by its file path
-    void addImage(string imagePath) {
-        documentElements.push_back(imagePath);
-    }
-
-    // Renders the document by checking the type of each element at runtime
-    string renderDocument() {
-        if(renderedDocument.empty()) {
-            string result;
-            for (auto element : documentElements) {
-                if (element.size() > 4 && (element.substr(element.size() - 4) == ".jpg" ||
-                 element.substr(element.size() - 4) == ".png")) {
-                    result += "[Image: " + element + "]" + "\n";
-                } else {
-                    result += element + "\n";
-                }
-            }
-            renderedDocument = result;
+    string render() const {
+        string result;
+        for (const auto& element : elements) {
+            result += element->render() + "\n";
         }
-        return renderedDocument;
+        return result;
     }
+};
 
-    void saveToFile() {
-        ofstream file("document.txt");
+// Abstract interface for persistence
+class Persistence {
+public:
+    virtual ~Persistence() = default;
+    virtual void save(const string& content) const = 0;
+};
+
+// Concrete implementation for file storage
+class FileStorage : public Persistence {
+private:
+    string filename;
+public:
+    FileStorage(string fn) : filename(std::move(fn)) {}
+
+    void save(const string& content) const override {
+        ofstream file(filename);
         if (file.is_open()) {
-            file << renderDocument();
+            file << content;
             file.close();
-            cout << "Document saved to document.txt" << endl;
+            cout << "Document saved to " << filename << endl;
         } else {
-            cout << "Error: Unable to open file for writing." << endl;
+            cout << "Error: Unable to open file '" << filename << "' for writing." << endl;
         }
     }
 };
 
 int main() {
-    DocumentEditor editor;
-    editor.addText("Hello, world!");
-    editor.addImage("picture.jpg");
-    editor.addText("This is a document editor.");
+    Document doc;
+    doc.addElement(make_unique<TextElement>("Hello, world!"));
+    doc.addElement(make_unique<ImageElement>("picture.jpg"));
+    doc.addElement(make_unique<TextElement>("This is a document editor."));
 
-    cout << editor.renderDocument() << endl;
+    string renderedContent = doc.render();
+    cout << renderedContent << endl;
 
-    editor.saveToFile();
+    FileStorage fileSaver("document.txt");
+    fileSaver.save(renderedContent);
     
     return 0;
 }
