@@ -2,7 +2,7 @@
 #include <unordered_map>
 #include <string>
 using namespace std;
-
+//this concept is being similar to dbms
 class DistributedLock {
 private:
     unordered_map<string, string> locks;
